@@ -185,24 +185,13 @@
             color: #666666;
         }
 
-        .form-container {
-            max-width: 400px;
-            margin: 100px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .content {
+            margin-left: 270px;
+            padding: 40px;
         }
 
-        h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        label {
+        .form-label {
             font-weight: 500;
-            margin-bottom: 5px;
         }
 
         .btn-submit {
@@ -210,7 +199,6 @@
             border: none;
             color: white;
             padding: 10px 20px;
-            width: 100%;
             font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
@@ -259,31 +247,47 @@
             </div>
         </div>
     </div>
-    <div class="form-container">
-        <h2>Employee</h2>
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="h2 mb-5"><b>Employee</b></div>
         <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            <div class="mb-3 row mt-3">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            <div class="mb-3 row">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-6">
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="position" class="form-label">Position</label>
-                <select class="form-select" id="position">
-                    <option selected>Select your position</option>
-                    <option value="1">Intern</option>
-                    <option value="2">Employee</option>
-                </select>
+            <div class="mb-3 row">
+                <label for="position" class="col-sm-2 col-form-label">Position</label>
+                <div class="col-sm-6">
+                    <select class="form-select" id="position">
+                        <option selected>Select your position</option>
+                        <option value="1">Intern</option>
+                        <option value="2">Employee</option>
+                    </select>
+                </div>
             </div>
-            <button type="submit" class="btn-submit">Submit</button>
+            <div class="mb-3 row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-6">
+                    <button type="submit" class="btn-submit">Submit</button>
+                </div>
+            </div>
         </form>
+    </div>
 
 
 
-        <script src="/assets/js/script.js"></script>
+
+
+    <script src="/assets/js/script.js"></script>
 </body>
 
 </html>
