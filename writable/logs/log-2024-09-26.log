@@ -1,0 +1,15 @@
+CRITICAL - 2024-09-26 05:44:34 --> ErrorException: Undefined variable $title
+[Method: GET, Route: home/login]
+in APPPATH\Views\layout\header.php on line 8.
+ 1 APPPATH\Views\layout\header.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\laragon\\www\\Attendance_Management_System\\app\\Views\\layout\\header.php', 8)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\Attendance_Management_System\\app\\Views\\layout\\header.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('layout/header', [], true)
+ 5 APPPATH\Controllers\Home.php(22): view('layout/header')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->login()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\Attendance_Management_System\\public\\index.php')
