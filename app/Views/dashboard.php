@@ -250,7 +250,7 @@
         <!-- Sidebar -->
         <div class="sidebar bg-light p-3">
             <div class="logo-container">
-                <img src="/assets/img/logo.png" alt="Logo" class="logo">
+                <img src="/assets/img/logoo.png" alt="Logo" class="logo">
                 <div class="h4 text-center"><b>AttendEase</b></div>
             </div>
             <ul class="nav flex-column">
@@ -272,11 +272,11 @@
           <div class="user-card shadow mt-8">
                 <img src="/assets/img/profile.jpg" alt="User Image">
                 <div class="user-info">
-                    <h6>Jake Sim</h6>
-                    <p>jakesim@gmail.com</p>
+                    <h6><?= session()->get('username'); ?></h6>
+                    <p><?= session()->get('email'); ?></p>
                 </div>
                 <div class="icon-container mb-4">
-                    <i class="bi bi-box-arrow-right"></i>
+                   <a href="/logout"><i class="bi bi-box-arrow-right"></i> </a> 
                 </div>
             </div>
         </div>

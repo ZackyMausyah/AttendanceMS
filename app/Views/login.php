@@ -30,11 +30,8 @@
                 <div class="form-group form-check d-flex justify-content-between mb-4 pt-0 pb-0 ps-0 pe-0">
                     <div class="form-group form-check" required>
                         <input type="checkbox" name="remember" class="form-check-input" required>
-                        <label class="form-check-label ms-2" for="remember" >Keep me signed in</label>
+                        <label class="form-check-label ms-2" for="remember">Keep me signed in</label>
                     </div>
-                    <!-- <div class="d-flex justify-content-between">
-                        <a href="/forgot-password">Forgot password?</a>
-                    </div> -->
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
             </form>
@@ -57,48 +54,47 @@
             const password = this.password.value;
 
             fetch('/api/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email,
-                        password
-                    })
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw response; // Lempar respons jika status bukan 2xx
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw response; // Lempar respons jika status bukan 2xx
+                }
+                return response.json(); // Parse respons ke format JSON
+            })
+            .then(data => {
+                // Jika respons API berhasil (status 200)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful!',
+                    text: 'You will be redirected to your dashboard.',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/dashboard';
                     }
-                    return response.json(); // Parse respons ke format JSON
-                })
-                .then(data => {
-                    // Jika respons API berhasil (status 200)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Login Successful!',
-                        text: 'You will be redirected to your dashboard.',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = '/dashboard';
-                        }
-                    });
-                })
-                .catch(async (errorResponse) => {
-                    // Tangkap error yang dilempar
-                    let errorMessage = 'Please try again later.';
-                    if (errorResponse.status === 401) {
-                        const errorData = await errorResponse.json();
-                        errorMessage = errorData.error || 'Incorrect email or password!';
-                    }
-
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Login Failed!',
-                        text: errorMessage,
-                        
-                    });
                 });
+            })
+            .catch(async (errorResponse) => {
+                // Tangkap error yang dilempar
+                let errorMessage = 'Please try again later.';
+                if (errorResponse.status === 401) {
+                    const errorData = await errorResponse.json();
+                    errorMessage = errorData.error || 'Incorrect email or password!';
+                }
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed!',
+                    text: errorMessage,
+                });
+            });
 
         });
     </script>

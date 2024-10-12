@@ -20,6 +20,9 @@
             <p>Start accessing your attendance data now.</p>
             <form id="registerForm">
                 <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
                     <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
@@ -43,6 +46,7 @@
             event.preventDefault(); // Prevent default form submission
 
             // Get input values
+            const username = document.querySelector('input[name="username"]').value;
             const email = document.querySelector('input[name="email"]').value;
             const password = document.querySelector('input[name="password"]').value;
 
@@ -62,6 +66,7 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        username,
                         email,
                         password
                     })

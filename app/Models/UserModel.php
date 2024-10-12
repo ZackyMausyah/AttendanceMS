@@ -10,10 +10,15 @@ class UserModel extends Model
     protected $primaryKey = 'id_admin';
     protected $allowedFields = ['username', 'email', 'password', 'reset_token']; // Tambahkan field lainnya jika perlu
 
-    public function getUserByLogin($loginField)
-    {
-        // Mencari pengguna berdasarkan email atau username
-        return $this->where('email', $loginField)->orWhere('username', $loginField)->first();
+    public function getUserByEmail($email)
+{
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return null; // Return null jika email tidak valid
     }
+    return $this->where('email', $email)->first();
 }
 
+
+
+
+}
