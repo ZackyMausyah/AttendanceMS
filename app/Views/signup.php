@@ -15,7 +15,6 @@
 
 <body>
     <div class="container">
-        <!-- Form Register -->
         <div class="login-form">
             <h3><b>Get Started</b></h3>
             <p>Start accessing your attendance data now.</p>
@@ -28,83 +27,78 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mt-3">Create Account</button>
             </form>
-            <p class="text-center mt-4" style="font-family: 'Poppins', sans-serif; color: black; font-size: 14px;">Have an account? <a href="/">login here</a></p>
+            <p class="text-center mt-4" style="font-family: 'Poppins', sans-serif; color: black; font-size: 14px;">
+                Have an account? <a href="/">login here</a>
+            </p>
         </div>
 
-        <!-- Gambar -->
         <div class="login-image">
             <img src="/assets/img/loginnimg.png" alt="Login Image">
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah form dari submit default
+            event.preventDefault(); // Prevent default form submission
 
+            // Get input values
             const email = document.querySelector('input[name="email"]').value;
             const password = document.querySelector('input[name="password"]').value;
 
+            // Show loading message
+            Swal.fire({
+                title: 'Processing...',
+                text: 'Please wait while we create your account.',
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // Send request to server
             fetch('http://localhost:8080/api/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        email: email,
-                        password: password
+                        email,
+                        password
                     })
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(data => {
-                    // Pastikan data memiliki format yang benar
-                    if (data.messages) {
-                        if (data.messages.error) {
-                            // Tampilkan error dengan SweetAlert2
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: data.messages.error,
-                            });
-                        } else {
-                            // Tampilkan pesan sukses dengan SweetAlert2
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: 'User registered successfully!',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    // Redirect ke halaman login/index setelah tombol OK ditekan
-                                    window.location.href = '/';
-                                }
-                            });
+                    Swal.close(); // Close loading message
 
-                        }
-                    } else {
+                    if (data.status === 201) {
                         Swal.fire({
-                            icon: 'warning',
-                            title: 'Unexpected Response',
-                            text: 'Unexpected response format: ' + JSON.stringify(data),
+                            icon: 'success',
+                            title: 'Success!',
+                            text: data.messages.success,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '/'; // Redirect to home page
+                            }
+                        });
+                    } else {
+                        const errorMessage = data.messages.error || 'An unknown error occurred.';
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: errorMessage,
                         });
                     }
                 })
-                .catch((error) => {
-                    console.error('Error:', error);
+                .catch(error => {
+                    Swal.close();
                     Swal.fire({
                         icon: 'error',
                         title: 'An error occurred',
-                        text: error.message,
+                        text: 'Something went wrong: ' + error.message,
                     });
                 });
         });
     </script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/assets/js/script.js"></script>
 </body>
 

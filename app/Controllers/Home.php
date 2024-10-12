@@ -42,12 +42,28 @@ class Home extends BaseController
 
     public function dashboard()
     {
+        $session = session();
         $data = [
-            'title' => ('Dashboard')
+            'title' => (' Dashboard Page')
         ];
 
         return view('dashboard', $data);
-    }  
+
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/login'); // Jika belum login, redirect ke halaman login
+        }
+
+        // Jika sudah login, tampilkan dashboard
+        return view('dashboard', ['title' => 'Dashboard']);
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $session->destroy(); // Menghancurkan semua session
+
+        return redirect()->to('/'); // Redirect ke halaman login
+    }
 
     public function employee()
     {

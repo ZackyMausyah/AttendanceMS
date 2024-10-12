@@ -245,6 +245,7 @@
 </head>
 
 <body>
+<?php if (session()->get('logged_in')) : ?>
     <div class="d-flex">
         <!-- Sidebar -->
         <div class="sidebar bg-light p-3">
@@ -347,6 +348,10 @@
       </div>
     </div>
   </div>
+  <?php else : ?>
+        <p>You are not logged in. <a href="/">Login here</a>.</p>
+        
+    <?php endif; ?>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>

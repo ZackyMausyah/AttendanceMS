@@ -72,48 +72,66 @@ class ApiController extends ResourceController
     public function register()
     {
         $model = new UserModel();
-
-        // Ambil data dari permintaan JSON
         $input = $this->request->getJSON();
 
-        // Pastikan data ada
+        // Check if input is received
         if (!$input) {
             return $this->respond([
                 'status' => 400,
-                'messages' => [
-                    'error' => 'No input received'
-                ]
+                'messages' => ['error' => 'No input received']
             ], 400);
         }
 
-        // Ambil email dan password dari input
         $email = $input->email ?? null;
         $password = $input->password ?? null;
 
-        // Validasi email dan password
+        // Validate required fields
         if (!$email || !$password) {
             return $this->respond([
                 'status' => 400,
-                'messages' => [
-                    'error' => 'Email and password are required'
-                ]
+                'messages' => ['error' => 'Email and password are required']
             ], 400);
         }
 
-        // Hash password
+        // Email validation
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->respond([
+                'status' => 400,
+                'messages' => ['error' => 'Invalid email format']
+            ], 400);
+        }
+
+        // Check if email already exists
+        $existingUserByEmail = $model->where('email', $email)->first();
+        if ($existingUserByEmail) {
+            return $this->respond([
+                'status' => 409,
+                'messages' => ['error' => 'Email is already registered']
+            ], 409);
+        }
+
+        // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Simpan pengguna baru ke database
-        $model->insert([
+        // Prepare data to save
+        $newUser = [
             'email' => $email,
             'password' => $hashedPassword,
-        ]);
+        ];
 
-        return $this->respond([
-            'status' => 201,
-            'messages' => [
-                'success' => 'User registered successfully'
-            ]
-        ], 201);
+        try {
+            // Save user to the database
+            $model->insert($newUser);
+            return $this->respond([
+                'status' => 201,
+                'messages' => ['success' => 'User registered successfully']
+            ], 201);
+        } catch (\Exception $e) {
+            log_message('error', 'Error while registering user: ' . $e->getMessage());
+            return $this->respond([
+                'status' => 500,
+                'messages' => ['error' => 'An error occurred while registering the user.']
+            ], 500);
+        }
     }
 }
