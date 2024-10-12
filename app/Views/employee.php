@@ -237,7 +237,7 @@
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item mb-3">
-                    <a class="nav-link" href="/home/dashboard"><i class="bi bi-grid me-2"></i> Dashboard</a>
+                    <a class="nav-link" href="/dashboard"><i class="bi bi-grid me-2"></i> Dashboard</a>
                 </li>
                 <li class="nav-item mb-3">
                     <a class="nav-link active" href="/home/employee"><i class="bi bi-people-fill me-2"></i> Employee</a>
