@@ -130,33 +130,7 @@ p {
         width: 100%; /* Ensure full width on small screens */
     }
 }
-
-
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #f8f9fa;
-    padding-top: 20px;
-}
-
-.sidebar .nav-link {
-    color: #333;
-}
-
-.sidebar .active {
-    background-color: #e9ecef;
-}
-
-.sidebar .profile img {
-    display: block;
-    margin: 0 auto;
-    width: 50px;
-    height: 50px;
-}
-
+    
 .content {
     margin-left: 250px; /* Adjust according to sidebar width */
     padding: 20px;
@@ -173,13 +147,13 @@ p {
 }
 
 .btn-primary {
-    background-color: #6c63ff;
-    border-color: #6c63ff;
+    background-color: #9D9FE6;
+    border-color: #9D9FE6;
 }
 
 .btn-primary:hover {
-    background-color: #5147d9;
-    border-color: #5147d9;
+    background-color: #7d7fb8;
+    border-color: #7d7fb8;
 }
 
 .action-buttons {

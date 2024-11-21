@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\AttendanceModel;
+
 class Home extends BaseController
 {
     public function login()
@@ -42,17 +44,7 @@ class Home extends BaseController
 
     public function dashboard()
     {
-        $session = session();
-        $data = [
-            'title' => (' Dashboard Page')
-        ];
-
-        return view('dashboard', $data);
-
-        if (!$session->get('logged_in')) {
-            return redirect()->to('/login'); // Jika belum login, redirect ke halaman login
-        }
-
+      
         // Jika sudah login, tampilkan dashboard
         return view('dashboard', ['title' => 'Dashboard']);
     }
@@ -68,7 +60,7 @@ class Home extends BaseController
     public function employee()
     {
         $data = [
-            'title' => ('Emloyee Data')
+            'title' => ('Employee Data')
         ];
 
         return view('employee', $data);
@@ -81,5 +73,30 @@ class Home extends BaseController
         ];
 
         return view('addemployee', $data);
+    }  
+
+    public function absensi()
+    {
+        $attendanceModel = new AttendanceModel();
+
+        // Mengambil data attendance beserta nama karyawan
+        $attendanceRecords = $attendanceModel->getAttendanceWithEmployeeNames();
+
+        // Kirim data ke view
+        $data = [
+            'title' => 'Attendance Data',
+            'attendance_records' => $attendanceRecords
+        ];
+
+        return view('absensi', $data);
+    }  
+
+    public function report()
+    {
+        $data = [
+            'title' => ('Monthly Report')
+        ];
+
+        return view('report', $data);
     }  
 }

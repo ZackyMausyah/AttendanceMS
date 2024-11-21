@@ -1,0 +1,71 @@
+INFO - 2024-11-01 01:48:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 01:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 01:49:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 01:51:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 01:52:23 --> Received data: stdClass Object
+(
+    [username] => admin
+    [email] => zackysyah123@gmail.com
+    [jobdesk] => Employee
+)
+
+INFO - 2024-11-01 01:52:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 01:52:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 01:53:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 01:54:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 03:17:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 07:02:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 07:05:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 07:05:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 07:05:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 07:05:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-01 07:39:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-01 08:39:39 --> ErrorException: fwrite(): Write of 76 bytes failed with errno=22 Invalid argument
+[Method: CLI, Route: serve]
+in SYSTEMPATH\CLI\InputOutput.php on line 78.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'fwrite(): Write of 76 bytes failed with errno=22 Invalid argument', 'C:\\Users\\zack\\Downloads\\AttendanceMS (2)\\AttendanceMS\\system\\CLI\\InputOutput.php', 78)
+ 2 SYSTEMPATH\CLI\InputOutput.php(78): fwrite(resource (stream), '[0;32mCodeIgniter development server started on http://localhost:8081[0m
+')
+ 3 SYSTEMPATH\CLI\CLI.php(1127): CodeIgniter\CLI\InputOutput->fwrite(resource (stream), '[0;32mCodeIgniter development server started on http://localhost:8081[0m
+')
+ 4 SYSTEMPATH\CLI\CLI.php(470): CodeIgniter\CLI\CLI::fwrite(resource (stream), '[0;32mCodeIgniter development server started on http://localhost:8081[0m
+')
+ 5 SYSTEMPATH\Commands\Server\Serve.php(99): CodeIgniter\CLI\CLI::write('[0;32mCodeIgniter development server started on http://localhost:8081[0m', 'green')
+ 6 SYSTEMPATH\Commands\Server\Serve.php(116): CodeIgniter\Commands\Server\Serve->run([])
+ 7 SYSTEMPATH\CLI\Commands.php(70): CodeIgniter\Commands\Server\Serve->run([])
+ 8 SYSTEMPATH\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('serve', [])
+ 9 SYSTEMPATH\Boot.php(351): CodeIgniter\CLI\Console->run()
+10 SYSTEMPATH\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+11 ROOTPATH\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2024-11-01 08:39:39 --> ErrorException: Uncaught ErrorException: fwrite(): Write of 34 bytes failed with errno=22 Invalid argument in C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\InputOutput.php:78
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'fwrite(): Write...', 'C:\\Users\\zack\\D...', 78)
+#1 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\InputOutput.php(78): fwrite(Resource id #2, '\e[0;37m\e[41m[Er...')
+#2 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\CLI.php(1127): CodeIgniter\CLI\InputOutput->fwrite(Resource id #2, '\e[0;37m\e[41m[Er...')
+#3 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\CLI.php(470): CodeIgniter\CLI\CLI::fwrite(Resource id #2, '\e[0;37m\e[41m[Er...')
+#4 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\app\Views\errors\cli\error_exception.php(6): CodeIgniter\CLI\CLI::write('\e[0;37m\e[41m[Er...', 'light_gray', 'red')
+#5 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\Debug\BaseExceptionHandler.php(266): include('C:\\Users\\zack\\D...')
+#6 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\Debug\BaseExceptionHandler.php(269): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#7 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\Debug\ExceptionHandler.php(114): CodeIgniter\Debug\BaseExceptionHandler->render(Object(ErrorException), 500, 'C:\\Users\\zack\\D...')
+#8 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\Debug\Exceptions.php(163): CodeIgniter\Debug\ExceptionHandler->handle(Object(ErrorException), Object(CodeIgniter\HTTP\CLIRequest), Object(CodeIgniter\HTTP\Response), 500, 1)
+#9 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#10 {main}
+  thrown
+【Previous Exception】
+ErrorException
+fwrite(): Write of 76 bytes failed with errno=22 Invalid argument
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'fwrite(): Write...', 'C:\\Users\\zack\\D...', 78)
+#1 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\InputOutput.php(78): fwrite(Resource id #2, '\e[0;32mCodeIgni...')
+#2 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\CLI.php(1127): CodeIgniter\CLI\InputOutput->fwrite(Resource id #2, '\e[0;32mCodeIgni...')
+#3 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\CLI.php(470): CodeIgniter\CLI\CLI::fwrite(Resource id #2, '\e[0;32mCodeIgni...')
+#4 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\Commands\Server\Serve.php(99): CodeIgniter\CLI\CLI::write('\e[0;32mCodeIgni...', 'green')
+#5 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\Commands\Server\Serve.php(116): CodeIgniter\Commands\Server\Serve->run(Array)
+#6 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\Commands.php(70): CodeIgniter\Commands\Server\Serve->run(Array)
+#7 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('serve', Array)
+#8 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#9 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#10 C:\Users\zack\Downloads\AttendanceMS (2)\AttendanceMS\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#11 {main}
+[Method: CLI, Route: serve]
+in SYSTEMPATH\CLI\InputOutput.php on line 78.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
